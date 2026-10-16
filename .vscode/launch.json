@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Theatrle: Run Android App",
+      "type": "node-terminal",
+      "request": "launch",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \"${workspaceFolder}/tools/Run-Android.ps1\" -Action Run -Avd \"${config:theatrle.avdName}\"",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}

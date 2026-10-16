@@ -1,0 +1,60 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Theatrle: Run on Emulator",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Run-Android.ps1", "-Action", "Run", "-Avd", "${config:theatrle.avdName}"],
+      "problemMatcher": [],
+      "group": {"kind": "build", "isDefault": true}
+    },
+    {
+      "label": "Theatrle: Launch App on Emulator",
+      "dependsOn": "Theatrle: Run on Emulator",
+      "problemMatcher": []
+    },
+    {
+      "label": "Theatrle: Build Debug APK",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Run-Android.ps1", "-Action", "Build"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Theatrle: Start Android Emulator",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Run-Android.ps1", "-Action", "Start", "-Avd", "${config:theatrle.avdName}"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Theatrle: Install Debug APK",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Run-Android.ps1", "-Action", "Install", "-Avd", "${config:theatrle.avdName}"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Theatrle: List Available Emulators",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Run-Android.ps1", "-Action", "List"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Theatrle: Check Connected Devices",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Run-Android.ps1", "-Action", "Devices"],
+      "problemMatcher": []
+    },
+    {
+      "label": "Theatrle: Check Game Rules",
+      "type": "process",
+      "command": "powershell.exe",
+      "args": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "${workspaceFolder}/tools/Test-Rules.ps1"],
+      "problemMatcher": []
+    }
+  ]
+}

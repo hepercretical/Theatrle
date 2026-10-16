@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Theatrle</string>
+    <string name="guess_count">Guess %1$d / 6</string>
+    <string name="fill_tiles">Fill all %1$d tiles</string>
+    <string name="copy_results">COPY RESULTS</string>
+    <string name="new_game">NEW GAME</string>
+</resources>

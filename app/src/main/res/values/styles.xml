@@ -1,0 +1,9 @@
+<resources>
+    <style name="Theme.Theatrle" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#9B5DE5</item>
+        <item name="android:navigationBarColor">#10131D</item>
+        <item name="android:statusBarColor">#10131D</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+</resources>
