@@ -38,15 +38,17 @@ public class RefreshFilms {
         }
         films.sort(Comparator.<String[]>comparingInt(f->votes.get(f[0])).reversed().thenComparing(f->f[0]));
         if(films.size()<300 || votes.get(films.get(299)[0])<=100000)throw new IllegalStateException("Insufficient candidate pool");
-        StringBuilder csv=new StringBuilder("title\n"), evidence=new StringBuilder("rank\timdb_id\tyear\tvotes\ttitle\n");
+        StringBuilder csv=new StringBuilder("title\n"), evidence=new StringBuilder("rank\timdb_id\tyear\tvotes\ttitle\n"), metadata=new StringBuilder("imdb_id\ttitle\n");
         for(int i=0;i<300;i++) {
             String[] f=films.get(i);
             csv.append('"').append(f[2].replace("\"","\"\"")).append("\"\n");
             evidence.append(i+1).append('\t').append(f[0]).append('\t').append(f[5]).append('\t').append(votes.get(f[0])).append('\t').append(f[2]).append('\n');
+            metadata.append(f[0]).append('\t').append(f[2]).append('\n');
         }
         Files.createDirectories(Path.of("docs"));
         Files.writeString(Path.of("app/src/main/res/raw/films.csv"),csv,StandardCharsets.UTF_8);
         Files.writeString(Path.of("docs/film-ranking.tsv"),evidence,StandardCharsets.UTF_8);
+        Files.writeString(Path.of("app/src/main/res/raw/film_metadata.tsv"),metadata,StandardCharsets.UTF_8);
         System.out.println("Generated 300 films on " + LocalDate.now() + "; rank 300 has " + votes.get(films.get(299)[0]) + " votes.");
     }
 }

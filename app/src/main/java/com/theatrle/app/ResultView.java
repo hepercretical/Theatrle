@@ -35,5 +35,7 @@ public final class ResultView extends ScrollView {
         Button again=new Button(context); again.setText(R.string.new_game); again.setTextColor(UiStyle.TEXT);
         again.setBackground(UiStyle.background(context,UiStyle.PURPLE)); again.setOnClickListener(v->newGame.run());
         content.addView(again,new LinearLayout.LayoutParams(-1,UiStyle.dp(context,56)));
+        // Appending the optional image keeps the existing results and button positions unchanged.
+        if(!game.isWon())content.addView(new MoviePosterView(context,game.getTitle()),new LinearLayout.LayoutParams(-1,-2));
     }
 }

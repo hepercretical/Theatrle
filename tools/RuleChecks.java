@@ -55,6 +55,14 @@ public final class RuleChecks {
         }
         List<String> films=FilmCsv.read(Files.newBufferedReader(Path.of("app/src/main/res/raw/films.csv"),StandardCharsets.UTF_8));
         check(films.size()==300,"Catalogue size");
+        List<String> metadata=Files.readAllLines(Path.of("app/src/main/res/raw/film_metadata.tsv"),StandardCharsets.UTF_8);
+        check(metadata.size()==301&&metadata.get(0).equals("imdb_id\ttitle"),"Poster metadata size/header");
+        Set<String> ids=new HashSet<>();
+        for(int i=0;i<films.size();i++) {
+            String[] entry=metadata.get(i+1).split("\t",2);
+            check(entry.length==2&&entry[0].matches("tt[0-9]+")&&ids.add(entry[0]),"Poster metadata ID");
+            check(entry[1].equals(films.get(i)),"Poster metadata does not match the catalogue");
+        }
         for(String film:films) for(float width:new float[]{240,320,360,480,720}) {
             MovieTitle title=new MovieTitle(film);TitleLayout layout=TitleLayout.create(title,width,48,5,24);int next=0;
             for(float used:layout.widths)check(used<=width+.01,"Row overflow: "+film);

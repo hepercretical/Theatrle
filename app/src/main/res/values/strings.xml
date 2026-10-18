@@ -4,4 +4,6 @@
     <string name="fill_tiles">Fill all %1$d tiles</string>
     <string name="copy_results">COPY RESULTS</string>
     <string name="new_game">NEW GAME</string>
+    <string name="movie_poster">Movie poster for %1$s</string>
+    <string name="poster_source">Poster source: Wikipedia / Wikimedia</string>
 </resources>
